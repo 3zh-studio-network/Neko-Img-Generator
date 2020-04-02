@@ -6,8 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script>window.$ = window.jQuery = require('jquery');</script>
 		<script>
+			const { app } = require('electron').remote;
+			var remote = window.require('electron').remote;
+			var fs = remote.require('fs');
+			
 			function dlinfo() {
 				$('.download').html("Download Done!");
+				$('.info').html('File will save to your "Photo Directory/nekos"');
 				setTimeout(() => {
 					$('.download').html("Download Img");
 				}, 1500);
@@ -22,21 +27,19 @@
 				$(".download").attr("disabled", "disabled");
 				
 				var imgmname = GetFilename(url);
-				var fs = require('fs');
 				var request = require('request');
 
-				var download = function(uri, filename, callback){
+				var download = function(uri, filename, callback){	
 					request.head(uri, function(err, res, body){
 						console.log('content-type:', res.headers['content-type']);
 						console.log('content-length:', res.headers['content-length']);
 						
-						fs.mkdir(__dirname+"/img", { recursive: true }, (err) => {
+						fs.mkdir(app.getPath('pictures')+"/nekos", { recursive: true }, (err) => {
 							if (err) {
 								throw err;
 							}
 						});
-						
-						request(uri).pipe(fs.createWriteStream(__dirname+"/img/"+filename)).on('close', callback);
+						request(uri).pipe(fs.createWriteStream(app.getPath('pictures')+"/nekos/"+filename)).on('close', callback);
 					});
 				};
 				
@@ -116,6 +119,7 @@
 			<br>
 			<img src="" class="imgput" style="padding: 5px 5px;width: 25em;">
 			<br>
+			<h6><span class="info"></span></h6>
 			<h5>Img Name: <span class="imgname"></span></h5>
 			<h5>Img Site: <span class="url"></span><button onclick="copyToClipboard('.url')">Copy</button><button onclick="DownloadImg($('.url').html())" class="download">Download Img</button></h5>
 			<h5>Img Database: <select class="imgtype"><option value="nekobot">Nekobot.xyz</option><option value="nekos">Nekos.life</option></select></h5>
