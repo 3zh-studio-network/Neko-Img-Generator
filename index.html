@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8">
+		<title>Neko Image Creater</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>window.$ = window.jQuery = require('jquery');</script>
+		<script>
+			function CreateNEKO(type){
+				if (type == "nekobot"){
+					$.ajax({
+						url: "https://nekobot.xyz/api/image?type=neko",
+						type: "GET",
+						success: function(returnData){
+							var json1 = JSON.stringify(returnData);
+							var jsonf = JSON.parse(json1);
+							console.log(returnData);
+							$(".imgput").attr("src",jsonf.message+" ");
+							$(".url").html(jsonf.message);
+						}
+					});
+				}else if (type == "nekos"){
+					const client = require('nekos.life');
+					const {sfw} = new client();
+					
+					sfw.neko().then(neko => {
+						var json1 = JSON.stringify(neko);
+						var jsonf = JSON.parse(json1);
+						console.log(neko);
+						$(".imgput").attr("src",jsonf.url+" ");
+						$(".url").html(jsonf.url);
+					});
+				}
+			}
+			function CreateNEKONSFW(type){
+				if (type == "nekobot"){
+					$.ajax({
+						url: "https://nekobot.xyz/api/image?type=hentai",
+						type: "GET",
+ 						success: function(returnData){
+							var json1 = JSON.stringify(returnData);
+							var jsonf = JSON.parse(json1);
+							console.log(returnData);
+							$(".imgput").attr("src",jsonf.message+" ");
+							$(".url").html(jsonf.message);
+						}
+					});
+				}else if (type == "nekos"){
+					const client = require('nekos.life');
+					const {nsfw} = new client();
+					
+					nsfw.neko().then(neko => {
+						var json1 = JSON.stringify(neko);
+						var jsonf = JSON.parse(json1);
+						console.log(neko);
+						$(".imgput").attr("src",jsonf.url+" ");
+						$(".url").html(jsonf.url);
+					});
+				}
+			}
+			function copyToClipboard(element) {
+				var $temp = $("<input>");
+				$("body").append($temp);
+				$temp.val($(element).html()).select();
+				document.execCommand("copy");
+				$temp.remove();
+			}
+		</script>
+	</head>
+	<body>
+		<dir class="site-content" style="">
+			<h1>Neko Image Creater</h1>
+			<br>
+			<img src="" class="imgput" style="padding: 5px 5px;width: 25em;">
+			<br>
+			<h5>Img Site: <span class="url"></span><button onclick="copyToClipboard('.url')">Copy</button></h5>
+			<h5>Img Database: <select class="imgtype"><option value="nekobot">Nekobot.xyz</option><option value="nekos">Nekos.life</option></select></h5>
+			<h3><button onclick="CreateNEKO($('.imgtype').val())">Create Nekos</button><button onclick="CreateNEKONSFW()">Create Hentai</button></h3>
+		</dir>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "neko-image",
+  "version": "0.8.7",
+  "description": "Automate create neko images",
+  "main": "main.js",
+  "scripts": {
+    "test": "test",
+    "start": "electron .",
+    "build": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "productName": "Neko Image Creater",
+    "appId": "com.threezhstudio.nekoimgc",
+    "directories": {
+      "output": "build"
+    },
+    "mac": {
+      "icon": "icon/logo.png"
+    },
+    "win": {
+      "icon": "icon/logo.png"
+    },
+    "linux": {
+      "icon": "icon/logo.png"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "custom-electron-titlebar": "^3.2.2-hotfix62",
+    "jquery": "^3.4.1",
+    "nekos.life": "^2.0.5"
+  }
+}
