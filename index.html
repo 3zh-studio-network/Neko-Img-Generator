@@ -6,6 +6,45 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script>window.$ = window.jQuery = require('jquery');</script>
 		<script>
+			function dlinfo() {
+				$('.download').html("Download Done!");
+				setTimeout(() => {
+					$('.download').html("Download Img");
+				}, 1500);
+			}
+			function GetFilename(url) {
+				var URI = require('urijs');
+				var url = new URI(url);
+				$('.imgname').html(url.filename());
+				return url.filename();
+			}
+			function DownloadImg(url) {
+				$(".download").attr("disabled", "disabled");
+				
+				var imgmname = GetFilename(url);
+				var fs = require('fs');
+				var request = require('request');
+
+				var download = function(uri, filename, callback){
+					request.head(uri, function(err, res, body){
+						console.log('content-type:', res.headers['content-type']);
+						console.log('content-length:', res.headers['content-length']);
+						
+						fs.mkdir(__dirname+"/img", { recursive: true }, (err) => {
+							if (err) {
+								throw err;
+							}
+						});
+						
+						request(uri).pipe(fs.createWriteStream(__dirname+"/img/"+filename)).on('close', callback);
+					});
+				};
+				
+				download(url, imgmname, function(){
+					console.log('done');
+					dlinfo();
+				});
+			}
 			function CreateNEKO(type){
 				if (type == "nekobot"){
 					$.ajax({
@@ -17,6 +56,7 @@
 							console.log(returnData);
 							$(".imgput").attr("src",jsonf.message+" ");
 							$(".url").html(jsonf.message);
+							GetFilename(jsonf.message);
 						}
 					});
 				}else if (type == "nekos"){
@@ -29,6 +69,7 @@
 						console.log(neko);
 						$(".imgput").attr("src",jsonf.url+" ");
 						$(".url").html(jsonf.url);
+						GetFilename(jsonf.url);
 					});
 				}
 			}
@@ -43,6 +84,7 @@
 							console.log(returnData);
 							$(".imgput").attr("src",jsonf.message+" ");
 							$(".url").html(jsonf.message);
+							GetFilename(jsonf.message);
 						}
 					});
 				}else if (type == "nekos"){
@@ -55,6 +97,7 @@
 						console.log(neko);
 						$(".imgput").attr("src",jsonf.url+" ");
 						$(".url").html(jsonf.url);
+						GetFilename(jsonf.url);
 					});
 				}
 			}
@@ -73,9 +116,10 @@
 			<br>
 			<img src="" class="imgput" style="padding: 5px 5px;width: 25em;">
 			<br>
-			<h5>Img Site: <span class="url"></span><button onclick="copyToClipboard('.url')">Copy</button></h5>
+			<h5>Img Name: <span class="imgname"></span></h5>
+			<h5>Img Site: <span class="url"></span><button onclick="copyToClipboard('.url')">Copy</button><button onclick="DownloadImg($('.url').html())" class="download">Download Img</button></h5>
 			<h5>Img Database: <select class="imgtype"><option value="nekobot">Nekobot.xyz</option><option value="nekos">Nekos.life</option></select></h5>
-			<h3><button onclick="CreateNEKO($('.imgtype').val())">Create Nekos</button><button onclick="CreateNEKONSFW()">Create Hentai</button></h3>
+			<h3><button onclick="CreateNEKO($('.imgtype').val());$('.download').removeAttr('disabled');">Create Nekos</button><button onclick="CreateNEKONSFW($('.imgtype').val());$('.download').removeAttr('disabled');">Create Hentai</button></h3>
 		</dir>
 	</body>
 </html>

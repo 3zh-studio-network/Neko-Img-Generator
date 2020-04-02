@@ -30,6 +30,8 @@
   "dependencies": {
     "custom-electron-titlebar": "^3.2.2-hotfix62",
     "jquery": "^3.4.1",
-    "nekos.life": "^2.0.5"
+    "nekos.life": "^2.0.5",
+    "request": "^2.88.2",
+    "urijs": "^1.19.1"
   }
 }
