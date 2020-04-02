@@ -12,9 +12,10 @@
 			
 			function dlinfo() {
 				$('.download').html("Download Done!");
-				$('.info').html('File will save to your "Photo Directory/nekos"');
+				$('.info').html('File will save to your "Photo Directory/nekos"').hide().fadeIn(1000);
 				setTimeout(() => {
 					$('.download').html("Download Img");
+					$('.info').html('File will save to your "Photo Directory/nekos"').fadeOut(1000);
 				}, 1500);
 			}
 			function GetFilename(url) {
