@@ -35,7 +35,7 @@
 						console.log('content-type:', res.headers['content-type']);
 						console.log('content-length:', res.headers['content-length']);
 						
-						fs.mkdir(app.getPath('pictures')+"/nekos", { recursive: true }, (err) => {
+						fs.mkdir(app.getPath('pictures')+"/nekos/", { recursive: true }, (err) => {
 							if (err) {
 								throw err;
 							}
@@ -50,59 +50,69 @@
 				});
 			}
 			function CreateNEKO(type){
-				if (type == "nekobot"){
-					$.ajax({
-						url: "https://nekobot.xyz/api/image?type=neko",
-						type: "GET",
-						success: function(returnData){
-							var json1 = JSON.stringify(returnData);
+				switch (type) {
+					case "nekobot":
+						$.ajax({
+							url: "https://nekobot.xyz/api/image?type=neko",
+							type: "GET",
+							success: function(returnData){
+								var json1 = JSON.stringify(returnData);
+								var jsonf = JSON.parse(json1);
+								console.log(returnData);
+								$(".imgput").attr("src",jsonf.message+" ");
+								$(".url").html(jsonf.message);
+								GetFilename(jsonf.message);
+							}
+						});
+						break;
+					case "nekos":
+						const client = require('nekos.life');
+						const {sfw} = new client();
+						
+						sfw.neko().then(neko => {
+							var json1 = JSON.stringify(neko);
 							var jsonf = JSON.parse(json1);
-							console.log(returnData);
-							$(".imgput").attr("src",jsonf.message+" ");
-							$(".url").html(jsonf.message);
-							GetFilename(jsonf.message);
-						}
-					});
-				}else if (type == "nekos"){
-					const client = require('nekos.life');
-					const {sfw} = new client();
-					
-					sfw.neko().then(neko => {
-						var json1 = JSON.stringify(neko);
-						var jsonf = JSON.parse(json1);
-						console.log(neko);
-						$(".imgput").attr("src",jsonf.url+" ");
-						$(".url").html(jsonf.url);
-						GetFilename(jsonf.url);
-					});
+							console.log(neko);
+							$(".imgput").attr("src",jsonf.url+" ");
+							$(".url").html(jsonf.url);
+							GetFilename(jsonf.url);
+						});
+						break;
+					default:
+						console.warn("You are not choose the image database!");
 				}
 			}
 			function CreateNEKONSFW(type){
-				if (type == "nekobot"){
-					$.ajax({
-						url: "https://nekobot.xyz/api/image?type=hentai",
-						type: "GET",
- 						success: function(returnData){
-							var json1 = JSON.stringify(returnData);
+				switch (type) {
+					case "nekobot":
+						$.ajax({
+							url: "https://nekobot.xyz/api/image?type=hentai",
+							type: "GET",
+ 							success: function(returnData){
+								var json1 = JSON.stringify(returnData);
+								var jsonf = JSON.parse(json1);
+								console.log(returnData);
+								$(".imgput").attr("src",jsonf.message+" ");
+								$(".url").html(jsonf.message);
+								GetFilename(jsonf.message);
+							}
+						});
+						break;
+					case "nekos":
+						const client = require('nekos.life');
+						const {nsfw} = new client();
+						
+						nsfw.neko().then(neko => {
+							var json1 = JSON.stringify(neko);
 							var jsonf = JSON.parse(json1);
-							console.log(returnData);
-							$(".imgput").attr("src",jsonf.message+" ");
-							$(".url").html(jsonf.message);
-							GetFilename(jsonf.message);
-						}
-					});
-				}else if (type == "nekos"){
-					const client = require('nekos.life');
-					const {nsfw} = new client();
-					
-					nsfw.neko().then(neko => {
-						var json1 = JSON.stringify(neko);
-						var jsonf = JSON.parse(json1);
-						console.log(neko);
-						$(".imgput").attr("src",jsonf.url+" ");
-						$(".url").html(jsonf.url);
-						GetFilename(jsonf.url);
-					});
+							console.log(neko);
+							$(".imgput").attr("src",jsonf.url+" ");
+							$(".url").html(jsonf.url);
+							GetFilename(jsonf.url);
+						});
+						break;
+					default:
+						console.warn("You are not choose the image database!");
 				}
 			}
 			function copyToClipboard(element) {
@@ -124,7 +134,7 @@
 			<h5>Img Name: <span class="imgname"></span></h5>
 			<h5>Img Site: <span class="url"></span><button onclick="copyToClipboard('.url')">Copy</button><button onclick="DownloadImg($('.url').html())" class="download">Download Img</button></h5>
 			<h5>Img Database: <select class="imgtype"><option value="nekobot">Nekobot.xyz</option><option value="nekos">Nekos.life</option></select></h5>
-			<h3><button onclick="CreateNEKO($('.imgtype').val());$('.download').removeAttr('disabled');">Create Nekos</button><button onclick="CreateNEKONSFW($('.imgtype').val());$('.download').removeAttr('disabled');">Create Hentai</button></h3>
+			<h3><button onclick="CreateNEKO($('.imgtype').val());$('.download').removeAttr('disabled');" class="btneko">Create Nekos</button><button onclick="CreateNEKONSFW($('.imgtype').val());$('.download').removeAttr('disabled');" class="bthentai">Create Hentai</button></h3>
 		</dir>
 	</body>
 </html>
