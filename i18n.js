@@ -18,6 +18,9 @@ function i18npc(cid,dcwr) {
 		case "en":
 			var langfile = "en.json";
 			break;
+		case "ja":
+			var langfile = "ja.json";
+			break;
 		case "zh":
 			var langfile = "zh-TW.json";
 			break;
@@ -25,7 +28,7 @@ function i18npc(cid,dcwr) {
 			var langfile = "zh-CN.json";
 			break;
 		case "zh-TW":
-			var langfile = "zh-TW.json";
+			var langfile = "ja.json";
 			break;
 		default:
 			var langfile = "en.json";		
