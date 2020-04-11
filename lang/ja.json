@@ -1,0 +1,18 @@
+{
+	"title": "Neko 画像ジェネレータ",
+	"test": "システムテスト...",
+	"imgn": "画像名： ",
+	"imgu": "画像のURL： ",
+	"imgdb": "画像データベース： ",
+	"copy": "コピーする",
+	"dwn": "保存する",
+	"dwnf": "ダウンロード完了！",
+	"dwnl": "ファイルは「写真ディレクトリ/nekos」に保存されます",
+	"ctnekos": "「キャットウーマン」グラフを生成する",
+	"cthentai": "「倒錯した」グラフを生成する",
+	"errnodb": "画像データベースを選択しません！",
+	"copyright": "「Neko 画像ジェネレータ」はオープンソースプロジェクトです。",
+	"copyrightgithub": "Github",
+	"copyrighttos": "利用規約",
+	"copyrightpvc": "個人情報保護方針"
+}
