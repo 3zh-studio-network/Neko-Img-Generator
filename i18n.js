@@ -1,4 +1,13 @@
 function i18npc(cid,dcwr) {
+	function langget(lang,docwrite) {
+		if (docwrite == false) {
+			var langpark = require("./lang/"+lang);
+			return langpark[langid];
+		}else if (docwrite == true) {
+			var langpark = require("./lang/"+lang);
+			document.write(langpark[langid]);
+		}
+	}
 	var langid = cid;
 	
 	//check write
@@ -14,31 +23,9 @@ function i18npc(cid,dcwr) {
 	}
 	
 	//check user language
-	switch (app.getLocale()) {
-		case "en":
-			var langfile = "en.json";
-			break;
-		case "ja":
-			var langfile = "ja.json";
-			break;
-		case "zh":
-			var langfile = "zh-TW.json";
-			break;
-		case "zh-CN":
-			var langfile = "zh-CN.json";
-			break;
-		case "zh-TW":
-			var langfile = "ja.json";
-			break;
-		default:
-			var langfile = "en.json";		
-	}
-	
-	if (docwrite == false) {
-		var langpark = require("./lang/"+langfile);
-		return langpark[langid];
-	}else if (docwrite == true) {
-		var langpark = require("./lang/"+langfile);
-		document.write(langpark[langid]);
+	try {
+		langget(app.getLocale(),docwrite);
+	} catch (error) {
+		langget("en",docwrite);
 	}
 }
