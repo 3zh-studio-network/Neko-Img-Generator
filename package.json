@@ -28,7 +28,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": ">=3.5.0",
     "nekos.life": "^2.0.5",
     "request": "^2.88.2",
     "urijs": "^1.19.2"
