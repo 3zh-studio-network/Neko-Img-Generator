@@ -1,18 +1,26 @@
 {
-	"title": "Neko Image Creater",
-	"test": "System Testing...",
-	"imgn": "Img Name: ",
-	"imgu": "Img Site: ",
-	"imgdb": "Img Database: ",
-	"copy": "Copy",
-	"dwn": "Download",
-	"dwnf": "Download Done!",
-	"dwnl": "The file will save to your [Photo Directory/nekos]",
-	"ctnekos": "Create Nekos",
-	"cthentai": "Create Hentai",
-	"errnodb": "You do not choose the image database!",
-	"copyright": "[Neko Image Creater] is an open-source project.",
-	"copyrightgithub": "Github",
-	"copyrighttos": "Terms of Service",
-	"copyrightpvc": "Privacy"
+	"ui": {
+		"title": "Neko Image Creater",
+		"test": "System Testing..."
+	},
+	"context": {
+		"imgn": "Img Name: ",
+		"imgu": "Img Site: ",
+		"imgdb": "Img Database: ",
+		"copy": "Copy",
+		"dwn": "Download",
+		"dwnf": "Download Done!",
+		"dwnl": "The file will save to your [Photo Directory/nekos]",
+		"ctnekos": "Create Nekos",
+		"cthentai": "Create Hentai"
+	},
+	"error": {
+		"nodb": "You do not choose the image database!"
+	},
+	"copyright": {
+		"copyright": "[Neko Image Creater] is an open-source project.",
+		"copyrightgithub": "Github",
+		"copyrighttos": "Terms of Service",
+		"copyrightpvc": "Privacy"
+	}
 }

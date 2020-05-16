@@ -1,18 +1,26 @@
 {
-	"title": "Neko 圖片生成器",
-	"test": "系統測試...",
-	"imgn": "圖片名稱： ",
-	"imgu": "圖片網址： ",
-	"imgdb": "圖片資料庫： ",
-	"copy": "複製",
-	"dwn": "下載",
-	"dwnf": "已下載完成！",
-	"dwnl": "資料將會存進「您的圖片資料夾 -> nekos」",
-	"ctnekos": "生成「貓女」圖",
-	"cthentai": "生成「變態」圖",
-	"errnodb": "您尚未選擇資料庫！",
-	"copyright": "「Neko 圖片生成器」是一個開源專案",
-	"copyrightgithub": "github 位置",
-	"copyrighttos": "服務條款",
-	"copyrightpvc": "隱私權政策"
+	"ui": {
+		"title": "Neko 圖片生成器",
+		"test": "系統測試..."
+	},
+	"context": {
+		"imgn": "圖片名稱： ",
+		"imgu": "圖片網址： ",
+		"imgdb": "圖片資料庫： ",
+		"copy": "複製",
+		"dwn": "下載",
+		"dwnf": "已下載完成！",
+		"dwnl": "資料將會存進「您的圖片資料夾 -> nekos」",
+		"ctnekos": "生成「貓女」圖",
+		"cthentai": "生成「變態」圖"
+	},
+	"error": {
+		"nodb": "您尚未選擇資料庫！"
+	},
+	"copyright": {
+		"copyright": "「Neko 圖片生成器」是一個開源專案",
+		"copyrightgithub": "github 位置",
+		"copyrighttos": "服務條款",
+		"copyrightpvc": "隱私權政策"
+	}
 }

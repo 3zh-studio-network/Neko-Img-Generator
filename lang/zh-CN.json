@@ -1,18 +1,26 @@
 {
-	"title": "Neko 图片生成器",
-	"test": "系统测试...",
-	"imgn": "图片名称： ",
-	"imgu": "图片网址： ",
-	"imgdb": "图片赀料库： ",
-	"copy": "拷贝",
-	"dwn": "下载",
-	"dwnf": "已下载完成！",
-	"dwnl": "资料将会存进「您的图片资料夹 -> nekos」",
-	"ctnekos": "生成「猫女」图",
-	"cthentai": "生成「变态」图",
-	"errnodb": "您尚未选择资料库！",
-	"copyright": "「Neko 图片生成器」是一个开源专案",
-	"copyrightgithub": "github 专案",
-	"copyrighttos": "服务条款",
-	"copyrightpvc": "隐私权政策"
+	"ui": {
+		"title": "Neko 图片生成器",
+		"test": "系统测试..."
+	},
+	"context": {
+		"imgn": "图片名称： ",
+		"imgu": "图片网址： ",
+		"imgdb": "图片赀料库： ",
+		"copy": "拷贝",
+		"dwn": "下载",
+		"dwnf": "已下载完成！",
+		"dwnl": "资料将会存进「您的图片资料夹 -> nekos」",
+		"ctnekos": "生成「猫女」图",
+		"cthentai": "生成「变态」图"
+	},
+	"error": {
+		"nodb": "您尚未选择资料库！"
+	},
+	"copyright": {
+		"copyright": "「Neko 图片生成器」是一个开源专案",
+		"copyrightgithub": "github 专案",
+		"copyrighttos": "服务条款",
+		"copyrightpvc": "隐私权政策"
+	}
 }
