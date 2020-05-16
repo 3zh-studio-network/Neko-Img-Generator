@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="main.css">
-		<title></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script>window.$ = window.jQuery = require('jquery');</script>
 		<script src="i18n.js"></script>
@@ -17,11 +16,11 @@
 				shell.openExternal(this.href);
 			});
 			function dlinfo() {
-				$('.download').html(i18npc("dwnf",false));
-				$('.info').html(i18npc("dwnl",false)).hide().fadeIn(1000);
+				$('.download').html(i18npc("context","dwnf",false));
+				$('.info').html(i18npc("context","dwnl",false)).hide().fadeIn(1000);
 				setTimeout(() => {
-					$('.download').html(i18npc("dwn",false));
-					$('.info').html(i18npc("dwnl",false)).fadeOut(1000);
+					$('.download').html(i18npc("context","dwn",false));
+					$('.info').html(i18npc("context","dwnl",false)).fadeOut(1000);
 				}, 1500);
 			}
 			function GetFilename(url) {
@@ -118,7 +117,7 @@
 						});
 						break;
 					default:
-						console.warn(i18npc("errnodb",false));
+						console.warn(i18npc("error","nodb",false));
 				}
 			}
 			function copyToClipboard(element) {
@@ -129,23 +128,23 @@
 				$temp.remove();
 			}
 		</script>
-		<script>$("title").html(i18npc("title",false))</script>
+		<script>$("head").append(`<title>${i18npc("ui","title",false)}</title>`)</script>
 	</head>
 	<body>
-		<dir class="site-content" style="">
-			<h1><script>i18npc("title",true)</script></h1>
+		<dir class="site-content">
+			<h1><script>i18npc("ui","title",true)</script></h1>
 			<br>
 			<img src="" class="imgput" style="padding: 5px 5px;width: 25em;">
 			<br>
 			<h6><span class="info"></span></h6>
-			<h5><script>i18npc("imgn",true)</script><span class="imgname"></span></h5>
-			<h5><script>i18npc("imgu",true)</script><span class="url"></span><button onclick="copyToClipboard('.url')"><script>i18npc("copy",true)</script></button><button onclick="DownloadImg($('.url').html())" class="download"><script>i18npc("dwn",true)</script></button></h5>
-			<h5><script>i18npc("imgdb",true)</script><select class="imgtype"><option value="nekobot">Nekobot.xyz</option><option value="nekos">Nekos.life</option></select></h5>
-			<h3><button onclick="CreateNEKO($('.imgtype').val());$('.download').removeAttr('disabled');" class="btneko"><script>i18npc("ctnekos",true)</script></button><button onclick="CreateNEKONSFW($('.imgtype').val());$('.download').removeAttr('disabled');" class="bthentai"><script>i18npc("cthentai",true)</script></button></h3>
+			<h5><script>i18npc("context","imgn",true);</script><span class="imgname"></span></h5>
+			<h5><script>i18npc("context","imgu",true);</script><span class="url"></span><button onclick="copyToClipboard('.url');"><script>i18npc("context","copy",true);</script></button><button onclick="DownloadImg($('.url').html());" class="download"><script>i18npc("context","dwn",true);</script></button></h5>
+			<h5><script>i18npc("context","imgdb",true);</script><select class="imgtype"><option value="nekobot">Nekobot.xyz</option><option value="nekos">Nekos.life</option></select></h5>
+			<h3><button onclick="CreateNEKO($('.imgtype').val());$('.download').removeAttr('disabled');" class="btneko"><script>i18npc("context","ctnekos",true);</script></button><button onclick="CreateNEKONSFW($('.imgtype').val());$('.download').removeAttr('disabled');" class="bthentai"><script>i18npc("context","cthentai",true);</script></button></h3>
 		</dir>
 		<div class="footer">
-			<h6><script>i18npc("copyright",true)</script></h6>
-			<h6><a href="https://github.com/3zh-studio-network/Neko-Img-Generator"><script>i18npc("copyrightgithub",true)</script></a> | <a href="https://www.3zh-studio.com/service/terms"><script>i18npc("copyrighttos",true)</script></a> | <a href="https://www.3zh-studio.com/service/privacy"><script>i18npc("copyrightpvc",true)</script></a></h6>
+			<h6><script>i18npc("copyright","copyright",true);</script></h6>
+			<h6><a href="https://github.com/3zh-studio-network/Neko-Img-Generator"><script>i18npc("copyright","copyrightgithub",true);</script></a> | <a href="https://www.3zh-studio.com/service/terms"><script>i18npc("copyright","copyrighttos",true);</script></a> | <a href="https://www.3zh-studio.com/service/privacy"><script>i18npc("copyright","copyrightpvc",true);</script></a></h6>
 		</div>
 	</body>
 </html>

@@ -1,31 +1,37 @@
-function i18npc(cid,dcwr) {
+function i18npc(TextTranslateType,TextTranslateId,IsDocumentWrite) {
 	function langget(lang,docwrite) {
 		if (docwrite == false) {
 			var langpark = require("./lang/"+lang);
-			return langpark[langid];
+			return langpark[langtype][lang1];
 		}else if (docwrite == true) {
 			var langpark = require("./lang/"+lang);
-			document.write(langpark[langid]);
+			document.write(langpark[langtype][lang1]);
 		}
 	}
-	var langid = cid;
-	
-	//check write
-	switch (dcwr) {
-		case true:
-			var docwrite = true;
-			break;
-		case false:
-			var docwrite = false;
-			break;
-		default:
-			var docwrite = true;
-	}
+
+	var langtype = TextTranslateType;
+	var lang1 = TextTranslateId;
 	
 	//check user language
 	try {
-		langget(app.getLocale(),docwrite);
+		switch(IsDocumentWrite){
+			case false:
+				return langget(app.getLocale(),false);
+				break;
+
+			case true:
+				langget(app.getLocale(),true);
+				break;
+		}
 	} catch (error) {
-		langget("en",docwrite);
+		switch(IsDocumentWrite){
+			case false:
+				return langget("en",false);
+				break;
+
+			case true:
+				langget("en",true);
+				break;
+		}
 	}
 }
